@@ -17,11 +17,13 @@ export class User {
   @Prop()
   contactMail: string
 
+  // Social Network
   @Prop()
-  platform: string[]
+  socialMediaPlatform: string[]
 
+  // Name Social Network
   @Prop()
-  alias: string
+  aliasSocialMedia: string
 
   @Prop()
   description1: string
@@ -45,7 +47,7 @@ export class User {
   manager: string
 
   @Prop()
-  ManagerEmail: string
+  managerEmail: string
 
   @Prop()
   tags: string[]
