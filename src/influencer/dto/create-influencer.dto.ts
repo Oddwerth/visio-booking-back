@@ -1,4 +1,4 @@
-import {IsArray, IsEmail, IsNotEmpty, IsString, Max, MaxLength} from "class-validator";
+import {IsArray, IsEmail, IsNotEmpty, IsString, MaxLength} from "class-validator";
 
 export class CreateInfluencerDto {
   @IsString()
@@ -11,7 +11,6 @@ export class CreateInfluencerDto {
   readonly contactMail: string;
 
   @IsArray()
-  @IsString()
   @IsNotEmpty()
   readonly socialMediaPlatform: string[];
 

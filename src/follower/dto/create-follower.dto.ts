@@ -16,7 +16,6 @@ export class CreateFollowerDto {
   readonly contactMail: string;
 
   @IsArray()
-  @IsString()
   @IsNotEmpty()
   readonly language: string[];
 }

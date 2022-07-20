@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-export type UserDocument = User & Document;
+export type InfluencerDocument = Influencer & Document;
 
 @Schema()
-export class User {
+export class Influencer {
   @Prop()
   userName: string
 
@@ -53,4 +53,4 @@ export class User {
   tags: string[]
 }
 
-export const UserSchema = SchemaFactory.createForClass(User)
+export const InfluencerSchema = SchemaFactory.createForClass(Influencer)

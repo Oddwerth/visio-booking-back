@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 
-export interface IUser extends Document {
+export interface IInfluencer extends Document {
   readonly userName: string
   readonly name: string
   readonly firstName: string
