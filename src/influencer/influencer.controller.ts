@@ -28,8 +28,16 @@ export class InfluencerController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.influencerService.findOne(+id);
+  async findOne(@Res() response, @Param('id') influencerId: string) {
+    try {
+      const existingInfluencer = await this.influencerService.findOneInfluencer(influencerId);
+      return response.status(HttpStatus.OK).json({
+        message: 'Influencer found successfully',
+        existingInfluencer
+      })
+    } catch (err) {
+      return response.status(err.status).json(err.response);
+    }
   }
 
   @Patch(':id')

@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable, NotFoundException} from '@nestjs/common';
 import {CreateFollowerDto} from "./dto/create-follower.dto";
 import {UpdateFollowerDto} from "./dto/update-follower.dto";
 import {InjectModel} from "@nestjs/mongoose";
@@ -19,8 +19,13 @@ export class FollowerService {
     return `This action returns all user`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOneFollower(followerId: string): Promise<IFollower> {
+    const existingFollower = await this.followerModel.findById(followerId).exec();
+
+    if (!existingFollower) {
+      throw new NotFoundException(`Follower #${followerId} not found`);
+    }
+    return existingFollower;
   }
 
   async updateFollower(followerId: string, updateFollowerDto: UpdateFollowerDto): Promise<IFollower> {

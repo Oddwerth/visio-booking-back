@@ -29,8 +29,16 @@ export class FollowerController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.followerService.findOne(+id);
+  async findOneFollower(@Res() response, @Param('id') followerId: string) {
+    try {
+      const existingFollower = await this.followerService.findOneFollower(followerId);
+      return response.status(HttpStatus.OK).json({
+        message: 'Follower found successfully',
+        existingFollower
+      })
+    } catch (err) {
+      return response.status(err.status).json(err.response);
+    }
   }
 
   @Patch(':id')

@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import {MongooseModule} from "@nestjs/mongoose";
 import { InfluencerModule } from './influencer/influencer.module';
 import {FollowerModule} from "./follower/follower.module";
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -11,6 +12,7 @@ import {FollowerModule} from "./follower/follower.module";
     MongooseModule.forRoot(process.env.DB_URL),
     InfluencerModule,
     FollowerModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
