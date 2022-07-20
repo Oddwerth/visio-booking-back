@@ -7,22 +7,4 @@ export class UpdateFollowerDto extends PartialType(CreateFollowerDto) {
   @MaxLength(30)
   @IsOptional()
   readonly userName: string;
-
-  @IsString()
-  @MaxLength(30)
-  @IsOptional()
-  readonly name: string;
-
-  @IsString()
-  @MaxLength(30)
-  @IsOptional()
-  readonly firstName: string;
-
-  @IsEmail()
-  @IsOptional()
-  readonly contactMail: string;
-
-  @IsArray()
-  @IsOptional()
-  readonly language: string[];
 }

@@ -5,27 +5,6 @@ import {IsArray, IsEmail, IsNotEmpty, IsOptional, IsString, MaxLength} from "cla
 export class UpdateInfluencerDto extends PartialType(CreateInfluencerDto) {
   @IsString()
   @MaxLength(30)
-  @IsNotEmpty()
-  @IsOptional()
-  readonly userName: string;
-
-  @IsEmail()
-  @IsNotEmpty()
-  @IsOptional()
-  readonly contactMail: string;
-
-  @IsArray()
-  @IsNotEmpty()
-  @IsOptional()
-  readonly socialMediaPlatform: string[];
-
-  @IsString()
-  @MaxLength(30)
-  @IsOptional()
-  readonly aliasSocialMedia: string;
-
-  @IsString()
-  @MaxLength(30)
   @IsOptional()
   readonly name: string;
 
