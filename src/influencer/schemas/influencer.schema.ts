@@ -15,6 +15,9 @@ export class Influencer {
   firstName: string
 
   @Prop()
+  password: string
+
+  @Prop()
   contactMail: string
 
   // Social Network

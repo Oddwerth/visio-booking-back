@@ -4,6 +4,7 @@ export interface IInfluencer extends Document {
   readonly userName: string
   readonly name: string
   readonly firstName: string
+  readonly password: string
   readonly contactMail: string
   readonly socialMediaPlatform: string[]
   readonly aliasSocialMedia: string

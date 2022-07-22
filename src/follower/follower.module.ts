@@ -8,7 +8,7 @@ import {FollowerSchema} from "./schemas/follower.schema";
   imports: [
     MongooseModule.forFeature([{name: 'Follower', schema: FollowerSchema}]),
   ],
-  controllers: [ FollowerController],
+  controllers: [FollowerController],
   providers: [FollowerService]
 })
 export class FollowerModule {}

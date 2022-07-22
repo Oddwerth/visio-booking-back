@@ -11,6 +11,11 @@ export class CreateFollowerDto {
   @IsNotEmpty()
   readonly firstName: string;
 
+  @IsString()
+  @MaxLength(30)
+  @IsNotEmpty()
+  readonly password: string;
+
   @IsEmail()
   @IsNotEmpty()
   readonly contactMail: string;

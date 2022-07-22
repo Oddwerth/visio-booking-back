@@ -15,6 +15,9 @@ export class Follower {
   firstName: string
 
   @Prop()
+  password: string
+
+  @Prop()
   contactMail: string
 
   @Prop()

@@ -19,11 +19,20 @@ export class InfluencerService {
     return `This action returns all user`;
   }
 
-  async findOneInfluencer(influencerId: string): Promise<IInfluencer> {
+  async findOneInfluencerById(influencerId: string): Promise<IInfluencer> {
     const existingInfluencer = await this.influencerModel.findById(influencerId).exec();
 
     if (!existingInfluencer) {
       throw new NotFoundException(`Influencer #${influencerId} not found`);
+    }
+    return existingInfluencer;
+  }
+
+  async findOneInfluencerByUserName(influencerUsername: string): Promise<IInfluencer> {
+    const existingInfluencer = await this.influencerModel.findOne({ userName: influencerUsername }).exec();
+
+    if (!existingInfluencer) {
+      throw new NotFoundException(`Influencer ${influencerUsername} not found`);
     }
     return existingInfluencer;
   }

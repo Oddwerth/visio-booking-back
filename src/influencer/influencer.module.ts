@@ -9,6 +9,7 @@ import {Influencer, InfluencerSchema} from "./schemas/influencer.schema";
     MongooseModule.forFeature([{name: 'Influencer', schema: InfluencerSchema}]),
   ],
   controllers: [InfluencerController],
-  providers: [InfluencerService]
+  providers: [InfluencerService],
+  exports: [InfluencerService]
 })
 export class InfluencerModule {}
