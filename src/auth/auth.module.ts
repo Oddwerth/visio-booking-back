@@ -6,19 +6,19 @@ import {LocalStrategy} from "./strategies/local.strategy";
 import { AuthController } from './auth.controller';
 import {JwtModule} from "@nestjs/jwt";
 import { ConfigModule } from '@nestjs/config';
-import {SessionSerializer} from "./serializer/session.serializer";
+import {JwtStrategy} from "./strategies/jwt.strategy";
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     InfluencerModule,
-    PassportModule.register({ session: true }),
+    PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '600s'},
     })
   ],
-  providers: [AuthService ,LocalStrategy, SessionSerializer],
+  providers: [AuthService ,LocalStrategy, JwtStrategy],
   exports: [AuthService],
   controllers: [AuthController],
 })
