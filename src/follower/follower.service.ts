@@ -4,14 +4,23 @@ import {UpdateFollowerDto} from "./dto/update-follower.dto";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {IFollower} from "./interfaces/follower.interface";
+import {GenericService} from "../generic/generic.service";
 
 @Injectable()
 export class FollowerService {
-  constructor(@InjectModel('Follower') private  followerModel:Model<IFollower>) { }
+  constructor(
+    @InjectModel('Follower') private  followerModel:Model<IFollower>,
+    private readonly genericService: GenericService,
+  ) { }
 
   async createFollower(createFollowerDto: CreateFollowerDto): Promise<IFollower> {
     // TODO Faire la vérification qu'il n'y a pas deja un user avec email et username identique
-    const newFollower = await new this.followerModel(createFollowerDto);
+    const password = await this.genericService.getPasswordHash(createFollowerDto.password)
+
+    const newFollower = await new this.followerModel({
+      ...createFollowerDto,
+      password
+    });
     return newFollower.save();
   }
 

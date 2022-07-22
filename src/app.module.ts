@@ -4,7 +4,7 @@ import {MongooseModule} from "@nestjs/mongoose";
 import { InfluencerModule } from './influencer/influencer.module';
 import {FollowerModule} from "./follower/follower.module";
 import { AuthModule } from './auth/auth.module';
-import {AuthController} from "./auth/auth.controller";
+import {GenericModule} from "./generic/generic.module";
 
 
 @Module({
@@ -14,6 +14,7 @@ import {AuthController} from "./auth/auth.controller";
     InfluencerModule,
     FollowerModule,
     AuthModule,
+    GenericModule,
   ],
   controllers: [],
   providers: [],

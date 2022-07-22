@@ -4,14 +4,22 @@ import { UpdateInfluencerDto } from './dto/update-influencer.dto';
 import {InjectModel} from "@nestjs/mongoose";
 import {IInfluencer} from "./interfaces/influencer.interface";
 import { Model } from 'mongoose';
+import {GenericService} from "../generic/generic.service";
 
 @Injectable()
 export class InfluencerService {
-  constructor(@InjectModel('Influencer') private  influencerModel:Model<IInfluencer>) { }
+  constructor(
+    @InjectModel('Influencer') private  influencerModel:Model<IInfluencer>,
+    private readonly genericService: GenericService,
+  ) { }
 
   async createInfluencer(createInfluencerDto: CreateInfluencerDto): Promise<IInfluencer> {
     // TODO Faire la vérification qu'il n'y a pas deja un user avec email et username identique
-    const newInfluencer = await new this.influencerModel(createInfluencerDto);
+    const password = await this.genericService.getPasswordHash(createInfluencerDto.password)
+    const newInfluencer = await new this.influencerModel({
+      ...createInfluencerDto,
+      password
+    });
     return newInfluencer.save();
   }
 
